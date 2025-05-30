@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [My Solution](https://your-solution-url.com)
-- Live Site URL: [Live demo](https://your-live-site-url.com)
+- Solution URL: [My Solution](https://www.frontendmentor.io/solutions/responsive-tip-calculator-xhhgyROsZT)
+- Live Site URL: [Live demo](https://mohamed-devp.github.io/tip-calculator/)
 
 ## My process
 
