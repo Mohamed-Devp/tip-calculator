@@ -1,5 +1,5 @@
 const tipOptions =  document.querySelectorAll('.option');
-const customTip = document.querySelector('.custom');
+const customOption = document.querySelector('.custom input');
 
 const bill = document.getElementById('bill');
 const numPeople = document.getElementById('num-people');
@@ -14,33 +14,28 @@ const data = {
 }
 
 /** 
- * Removes the placeholder "Custom" from the customTip element. 
- */
-function onCustomFocus() {
-    customTip.classList.add('active');
-    if (customTip.innerHTML == 'Custom') {
-        customTip.innerHTML = '\u200B';
-    }
-}
-
-/** 
  * Handles the custom tip input.
  */
 function onCustomInput() {
-    customTip.classList.remove('error', 'valid');
+    const customOptionContainer = customOption.parentElement;
 
-    const tip = Number(
-        customTip.textContent.replace(/\u200B/g, '').trim()
-    );
+    customOptionContainer.classList.remove('valid', 'invalid');
 
-    if (!Number.isNaN(tip) && tip != 0) {
-        data.tip = tip;
-        customTip.classList.add('valid');
+    const tipPerc = Number(customOption.value);
+
+    if (Number.isNaN(tipPerc) || tipPerc == 0) {
+        data.tip = 0;
+        customOptionContainer.classList.add('invalid');
 
     } else {
-        data.tip = 0;
-        customTip.classList.add('error');
+        data.tip = tipPerc;
+        customOptionContainer.classList.add('valid');
     }
+
+    // Unselect previously selected tip option
+    tipOptions.forEach(option => {
+        option.classList.remove('selected');
+    });
 
     calculateAmount();
 }
@@ -52,10 +47,9 @@ function onCustomInput() {
  */
 function onInput(event, property) {
     const { target } = event;
-    const targetContainer = target.closest('div');
+    const targetContainer = target.parentElement;
 
-    targetContainer.classList.remove('invalid', 'error');
-    target.classList.remove('valid');
+    targetContainer.classList.remove('valid', 'invalid', 'error');
 
     const value = Number(target.value);
 
@@ -69,7 +63,7 @@ function onInput(event, property) {
 
     } else {
         data[property] = value;
-        target.classList.add('valid');
+        targetContainer.classList.add('valid');
     }
 
     calculateAmount();
@@ -86,10 +80,6 @@ function selectTipOption(event) {
     tipOptions.forEach(option => {
         option.classList.remove('selected');
     });
-
-    if (target.classList.contains('custom')) {
-        return;
-    }
 
     target.classList.add('selected');
     
@@ -130,6 +120,9 @@ function reset() {
     bill.value = '';
     numPeople.value = '';
 
+    // Reset the cutom tip input
+    customOption.value = '';
+
     // Reset the tip selector
     tipOptions.forEach(option => {
         if (option.classList.contains('custom')) {
@@ -150,9 +143,6 @@ function reset() {
  * Runs once the page is rendered. 
  */
 function onMount() {
-    customTip.onfocus = onCustomFocus;
-    customTip.oninput = onCustomInput;
-
     bill.addEventListener('input', (event) => {
         onInput(event, 'bill');
     });
@@ -160,6 +150,8 @@ function onMount() {
     numPeople.addEventListener('input', (event) => {
         onInput(event, 'numPeople');
     });
+
+    customOption.addEventListener('input', onCustomInput);
 
     tipOptions.forEach(option => {
         option.addEventListener('click', selectTipOption);

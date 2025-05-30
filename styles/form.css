@@ -20,7 +20,7 @@
     margin-top: 8px;
     border: 2px solid transparent;
     border-radius: 4px;
-    transition: border-color .25s ease-in;
+    transition: border-color .2s ease-in;
 }
 
 .input-container img {
@@ -32,7 +32,7 @@
     transform: translateY(-50%);
 }
 
-input {
+.input-container input {
     width: 100%;
     height: 100%;
     padding: 16px;
@@ -41,17 +41,15 @@ input {
     font-size: 18px;
     font-weight: 700;
     text-align: right;
-    border: 2px solid transparent;
     color: var(--green-900);
     background-color: var(--grey-50);
-    transition: border-color .25s ease-in;
+}
+
+.input-container input::placeholder {
+    color: var(--grey-400);
 }
 
 /* Valid input */
-.valid {
-    cursor: pointer;
-}
-
 .valid:hover {
     border-color: var(--green-400);
 }
@@ -74,10 +72,6 @@ input {
     color: tomato;
 }
 
-input::placeholder {
-    color: var(--grey-400);
-}
-
 .tip-selector {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -90,7 +84,6 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid transparent;
     border-radius: 4px;
     font-size: 18px;
     font-weight: 700;
@@ -110,30 +103,32 @@ input::placeholder {
     background-color: var(--green-400);
 }
 
-.tip-selector .custom { 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 20px;
-    color: var(--grey-500);
-    background-color: var(--grey-50);
-    cursor: text;
-}
-
-.tip-selector .active {
-    color: var(--green-900);
-}
-
-.tip-selector .error {
+.tip-selector .invalid {
     border-color: tomato;
 }
 
-.tip-selector .valid {
-    cursor: pointer;
+.custom  {
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: border-color .2s ease-in;
 }
 
-.tip-selector .valid:hover {
-    border-color: var(--green-400);
+.custom input {
+    width: 100%;
+    height: 100%;
+    padding: 14px;
+    border-radius: inherit;
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+    color: var(--green-900);
+    background-color: var(--grey-50);
+}
+
+.custom input::placeholder {
+    text-align: left;
+    color: var(--grey-400);
 }
 
 /* Media queries */
