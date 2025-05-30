@@ -1,0 +1,152 @@
+.form {
+    --grey-50: hsl(189, 47%, 97%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 45%;
+    height: 100%;
+}
+
+.form label, .form p {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--grey-500);
+}
+
+.input-container {
+    position: relative;
+    height: 40px;
+    margin-top: 8px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: border-color .25s ease-in;
+}
+
+.input-container img {
+    position: absolute;
+    width: 10px; 
+    height: auto;
+    left: 16px; 
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border-radius: inherit;
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+    border: 2px solid transparent;
+    color: var(--green-900);
+    background-color: var(--grey-50);
+    transition: border-color .25s ease-in;
+}
+
+/* Valid input */
+.valid {
+    cursor: pointer;
+}
+
+.valid:hover {
+    border-color: var(--green-400);
+}
+
+/* Empty input (zero) */
+.invalid, .error {
+    border-color: tomato;
+}
+
+.error::after {
+    content: "Can't be zero";
+    position: absolute;
+    width: fit-content;
+    height: 20px;
+    right: 10px;
+    bottom: calc(100% + 5px); 
+    font-family: var(--main-font);
+    font-size: 14px;
+    font-weight: 700;
+    color: tomato;
+}
+
+input::placeholder {
+    color: var(--grey-400);
+}
+
+.tip-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-rows: 40px;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background-color: var(--green-900);
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+.option:hover {
+    color: var(--green-900);
+    background-color: var(--green-200);
+}
+
+.selected {
+    color: var(--green-900);
+    background-color: var(--green-400);
+}
+
+.tip-selector .custom { 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    color: var(--grey-500);
+    background-color: var(--grey-50);
+    cursor: text;
+}
+
+.tip-selector .active {
+    color: var(--green-900);
+}
+
+.tip-selector .error {
+    border-color: tomato;
+}
+
+.tip-selector .valid {
+    cursor: pointer;
+}
+
+.tip-selector .valid:hover {
+    border-color: var(--green-400);
+}
+
+/* Media queries */
+@media screen and (max-width: 850px) {
+    .form {
+        width: 100%;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .form {
+        width: 100%;
+        height: 375px;
+    }
+}

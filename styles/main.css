@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Shared styles */
+* {
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Primary color */
+    --green-400: hsl(172, 67%, 45%);
+    --green-900: hsl(183, 100%, 15%);
+
+    /* Neutral colors */
+    --grey-500: hsl(186, 14%, 43%);
+    --grey-400: hsl(184, 14%, 56%);
+    --grey-200: hsl(185, 41%, 84%);
+    --green-200: hsl(172, 67%, 80%);
+
+    /* Primary font */
+    --main-font: "Space Mono";
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--main-font);
+    background-color: var(--grey-200);
+}
+
+header, main {
+    width: 800px;
+}
+
+/* Header section styles */
+header {
+    display: flex;
+    justify-content: center;
+    height: 125px;
+}
+
+header img {
+    width: 80px;
+    height: 50px;
+}
+
+/* Main section styles*/
+main {
+    display: flex;
+    justify-content: space-between;
+    height: 400px;
+    padding: 2rem;
+    border-radius: 18px;
+    background-color: white;
+    box-shadow: 0 16px 24px hsla(172, 67%, 45%, .2);
+}
+
+/* Media queries */
+@media screen and (max-width: 850px) {
+    body {
+        justify-content: flex-start;
+        padding-bottom: 3rem;
+    }
+
+    main, header {
+        width: 400px;
+    }
+
+    header {
+        padding: 3rem;
+        height: fit-content;
+    }
+
+    main {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: auto;
+        gap: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    body {
+        padding: 0;
+    }
+
+    main, header {
+        width: 100vw;
+    }
+
+    main {
+        padding: 1.5rem;
+        border-radius: 18px 18px 0 0;
+    }
+}

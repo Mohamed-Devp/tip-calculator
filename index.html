@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/form.css">
+  <link rel="stylesheet" href="./styles/display.css">
+</head>
+<body>
+  <header>
+    <img src="./images/logo.svg" alt="logo">
+  </header>
+  <main>
+    <div class="form">
+      <div>
+        <label for="bill">Bill</label>
+        <div class="input-container">
+          <input type="text" id="bill" placeholder="0">
+          <img src="./images/icon-dollar.svg" alt="Dollar">
+        </div>
+      </div>
+      <div>
+        <p>Select Tip %</p>
+        <div class="tip-selector">
+          <div class="option" data-value = "5">5%</div>
+          <div class="option" data-value = "10">10%</div>
+          <div class="option" data-value = "15">15%</div>
+          <div class="option" data-value = "25">25%</div>
+          <div class="option" data-value = "50">50%</div>
+          <div class="option custom" contenteditable>Custom</div>
+        </div>
+      </div>
+      <div>
+        <label for="num-people">Number of People</label>
+        <div class="input-container">
+          <input type="text" id="num-people" placeholder="0">
+          <img src="./images/icon-person.svg" alt="Person">
+        </div>
+      </div>
+    </div>
+    <div class="display">
+      <div class="section tip-amount">
+        <p class="label">Tip Amount<br><span>/ person</span></p>
+        <p class="amount">$0.00</p>
+      </div>
+      <div class="section total">
+        <p class="label">Total<br><span>/ person</span></p>
+        <p class="amount">$0.00</p>
+      </div>
+      <button class="empty">Reset</button>
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>
